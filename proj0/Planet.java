@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Planet
 {
 	public double xxPos;
@@ -33,6 +35,80 @@ public class Planet
 		mass = p.getm();
 		imgFileName = p.getimg();
 	}
+
+	public double calcDistance(Planet p2)
+	{
+		double xDiff = this.getxP() - p2.getxP();
+		double yDiff = this.getyP() - p2.getyP();
+		double dis = Math.sqrt(xDiff*xDiff + yDiff*yDiff);
+		return dis;
+	}
+
+
+	public double calcForceExertedBy(Planet p2)
+	{
+		double G = 6.67e-11;
+		double force = G * this.getm() * p2.getm() / (this.calcDistance(p2) * this.calcDistance(p2));
+		return force;
+	}
+
+	public double calcForceExertedByX(Planet p2)
+	{
+		double forceX = (p2.getxP() - this.getxP())/this.calcDistance(p2) * this.calcForceExertedBy(p2);
+		return forceX;
+	}
+
+	public double calcForceExertedByY(Planet p2)
+	{
+		double forceY = (p2.getyP() - this.getyP())/this.calcDistance(p2) * this.calcForceExertedBy(p2);
+		return forceY;
+	}
+
+	public double calcNetForceExertedByX(Planet[] allP)
+	{
+		double ans = 0.0;
+		for(Planet items: allP)
+		{
+			if(!this.equals(items))	{ans += this.calcForceExertedByX(items);}
+		}
+		return ans;
+	}
+
+	public double calcNetForceExertedByY(Planet[] allP)
+	{
+		double ans = 0.0;
+		for(Planet items: allP)
+		{
+			if(!this.equals(items))	{ans += this.calcForceExertedByY(items);}
+		}
+		return ans;
+	}
+
+	public void update(double dt, double fX, double fY)
+	{
+		double aX = fX / this.getm();
+		double aY = fY / this.getm();
+		this.xxVel = this.getxV() + dt * aX;
+		this.yyVel = this.getyV() + dt * aY;
+		this.xxPos = this.getxP() + dt * this.getxV();
+		this.yyPos = this.getyP() + dt * this.getyV();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// public Planet(Planet p)
 	// {
