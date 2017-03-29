@@ -3,7 +3,7 @@ public class NBody
 	public static double readRadius(String dir)
 	{
 		In in = new In(dir);
-		in.readInt();
+		int numP =in.readInt();
 		double radius = in.readDouble();
 		return radius;
 	}
@@ -11,12 +11,12 @@ public class NBody
 	public static Planet[] readPlanets(String dir)
 	{
 		In in = new In(dir);
-		in.readInt();
-		in.readDouble();
+		int numP = in.readInt();
+		double radius = in.readDouble();
 		
-		Planet[] planets = new Planet[5];
+		Planet[] planets = new Planet[numP];
 
-		for(int i = 0; i < 5; i ++)
+		for(int i = 0; i < numP; i ++)
 		{
 			double xxPos = in.readDouble();
 			double yyPos = in.readDouble();
@@ -42,11 +42,11 @@ public class NBody
 		NBody.readPlanets(filename);
 
 		/* Draw the Backgroung */
-		StdDraw.setScale(-3.6e11,3.6e11);
+		StdDraw.setScale(-3e11,3e11);
 		StdDraw.picture(0,0,"./images/starfield.jpg");
 
 		/* Draw All the Planets*/
-		Planet[] allPlanets = readPlanets("./data/planets.txt");
+		Planet[] allPlanets = readPlanets(filename);
 		for(Planet planet: allPlanets)
 		{
 			planet.draw();
@@ -55,8 +55,8 @@ public class NBody
 		/* Create an Animation! */
 		for(double t= 0.0; t<T; t += dt)
 		{
-			double[] xForces = new double[5];
-			double[] yForces = new double[5];
+			double[] xForces = new double[allPlanets.length];
+			double[] yForces = new double[allPlanets.length];
 
 			for(int p = 0; p < allPlanets.length; p++)
 			{
@@ -92,12 +92,5 @@ public class NBody
 		}
 
 	}
-
-
-
-
-
-
-
 
 }
