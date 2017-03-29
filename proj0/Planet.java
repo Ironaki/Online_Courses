@@ -94,7 +94,10 @@ public class Planet
 		this.yyPos = this.getyP() + dt * this.getyV();
 	}
 
-
+	public void draw()
+	{
+		StdDraw.picture(this.getxP(),this.getyP(),"./images/" + this.getimg());
+	}
 
 
 
