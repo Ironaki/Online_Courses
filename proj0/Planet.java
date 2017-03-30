@@ -100,19 +100,6 @@ public class Planet
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	// public Planet(Planet p)
 	// {
 	// 	this.xxPos = p.getxP();

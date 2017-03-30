@@ -1,3 +1,6 @@
+/* Check out chaosblossom.txt
+This one is most beatiful. */
+
 public class NBody
 {
 	public static double readRadius(String dir)
@@ -38,11 +41,11 @@ public class NBody
 		double T = Double.parseDouble(args[0]);
 		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
-		NBody.readRadius(filename);
+		double radius = NBody.readRadius(filename);
 		NBody.readPlanets(filename);
 
 		/* Draw the Backgroung */
-		StdDraw.setScale(-3e11,3e11);
+		StdDraw.setScale(-radius,radius);
 		StdDraw.picture(0,0,"./images/starfield.jpg");
 
 		/* Draw All the Planets*/
