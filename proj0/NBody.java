@@ -97,3 +97,6 @@ public class NBody
 	}
 
 }
+
+/* I have changed the directory of my folder on my computer
+** I just want to check if my git still works.*/
