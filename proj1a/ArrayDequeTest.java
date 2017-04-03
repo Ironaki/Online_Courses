@@ -39,7 +39,7 @@ public class ArrayDequeTest {
         System.out.println("Running add/isEmpty/Size test.");
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-        LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
         boolean passed = checkEmpty(true, lld1.isEmpty());
 
@@ -72,14 +72,15 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         // should be empty
         boolean passed = checkEmpty(true, lld1.isEmpty());
+        lld1.printDeque();
 
         lld1.addFirst(4);
         // should not be empty
         passed = checkEmpty(false, lld1.isEmpty()) && passed;
 
-//        lld1.removeFirst();
-//        // should be empty
-//        passed = checkEmpty(true, lld1.isEmpty()) && passed;
+        lld1.removeFirst();
+        // should be empty
+        passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
         printTestStatus(passed);
 
@@ -111,21 +112,15 @@ public class ArrayDequeTest {
         System.out.println("");
         System.out.println(lld1.size());
         lld1.printDeque();
-        int a = 1;
-        double b = 1.0;
-        System.out.println(a == b);
 
-//		System.out.println(lld1.size());
-//		lld1.removeLast();
-//		System.out.println(lld1.size());
-//		lld1.printDeque();
-//		System.out.println(lld1.isEmpty());
+
 
     }
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
-//        addIsEmptySizeTest();
+        addIsEmptySizeTest();
         addRemoveTest();
+
     }
 }

@@ -138,6 +138,4 @@ public class ArrayDeque<Flug> {
             return all[index + pointer] ;
         }
     }
-
-
 }
