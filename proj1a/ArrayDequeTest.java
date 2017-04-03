@@ -84,6 +84,8 @@ public class ArrayDequeTest {
 
         printTestStatus(passed);
 
+        System.out.println(lld1.removeLast());
+
 		/* Here are some more tests that I write on my own.*/
         lld1.addFirst(3);
         lld1.addFirst(2);

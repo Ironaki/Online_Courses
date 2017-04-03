@@ -95,6 +95,9 @@ public class ArrayDeque<Flug> {
         if (usageRate < 0.25){
             resize((int)(all.length * 0.5));
         }
+        if(size == 0){
+            return null;
+        }
         size -= 1;
         Flug A = all[pointer];
         all[pointer] = null;
@@ -112,6 +115,9 @@ public class ArrayDeque<Flug> {
         usageRate = (double)size/all.length;
         if (usageRate < 0.25){
             resize((int)(all.length * 0.5));
+        }
+        if (size == 0){
+            return null;
         }
         Flug A;
         if (pointer + size > all.length){
