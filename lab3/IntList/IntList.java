@@ -99,8 +99,24 @@ public class IntList {
             return B;
     }
 
+    /**
+     * Returns the reverse of the given IntList.
+     * This method is destructive. If given null
+     * as an input, returns null.
+     */
+    public static IntList reverse(IntList A){
+        if (A == null){
+            return A;
+        }
+        if (A.rest == null){
+            IntList R = new IntList(A.first, null);
+            return R;
+        }
+        IntList S = reverse(A.rest);
+        S.rest = new IntList(A.first, null);
 
-
+        return S.rest;
+    }
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
      * will be introduced later in the course or feature some form of advanced

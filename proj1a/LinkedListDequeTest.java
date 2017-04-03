@@ -36,7 +36,7 @@ public class LinkedListDequeTest {
 	public static void addIsEmptySizeTest() {
 		System.out.println("Running add/isEmpty/Size test.");
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
+
 		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -58,7 +58,6 @@ public class LinkedListDequeTest {
 		lld1.printDeque();
 
 		printTestStatus(passed);
-		*/
 	}
 
 	/** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
@@ -67,7 +66,7 @@ public class LinkedListDequeTest {
 		System.out.println("Running add/remove test.");
 
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
+
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -81,12 +80,30 @@ public class LinkedListDequeTest {
 		passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
 		printTestStatus(passed);
-		*/
+
+		/* Here are some more tests that I write on my own.*/
+		lld1.addFirst(3);
+		lld1.addFirst(2);
+		lld1.addFirst(1);
+		lld1.addLast(4);
+		System.out.println(lld1.get(2));
+		lld1.printDeque();
+		System.out.println("");
+		System.out.println(lld1.getRecursive(0));
+		lld1.printDeque();
+
+//		System.out.println(lld1.size());
+//		lld1.removeLast();
+//		System.out.println(lld1.size());
+//		lld1.printDeque();
+//		System.out.println(lld1.isEmpty());
+
+
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
-		addIsEmptySizeTest();
+ 		addIsEmptySizeTest();
 		addRemoveTest();
 	}
 } 
