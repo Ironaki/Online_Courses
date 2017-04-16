@@ -1,5 +1,9 @@
 package synthesizer;
 
+/** I find messing with Iterable and iterator is quite annoying,
+ *  but the answer I give in this piece of code should be a nice example.
+ */
+
 import java.util.Iterator;
 
 //Make sure to make this class and all of its methods public

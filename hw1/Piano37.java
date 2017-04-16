@@ -17,6 +17,8 @@ public class Piano37 {
         while (true) {
             while (StdDraw.hasNextKeyTyped()) {
 
+                //Basically read in a key and plays the sound for a while
+
                 char key = StdDraw.nextKeyTyped();
                 int index = keyboard.indexOf(key);
                 double freq = 440.0 * Math.pow(2, ((index - 24) / 12.0));
@@ -25,6 +27,8 @@ public class Piano37 {
 
                 thisKey.pluck();
 
+                // Try to change the upper bound of this loop
+                // you will get sound in different length
                 for (int i = 0; i < 30000; i += 1) {
                     StdAudio.play(thisKey.sample());
                     thisKey.tic();
