@@ -105,17 +105,13 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A){
-        if (A == null){
+        if (A == null || A.rest == null){
             return A;
         }
-        if (A.rest == null){
-            IntList R = new IntList(A.first, null);
-            return R;
-        }
-        IntList S = reverse(A.rest);
-        S.rest = new IntList(A.first, null);
-
-        return S.rest;
+        IntList reversed = reverse(A.rest);
+        A.rest.rest = A;
+        A.rest = null;
+        return reversed;
     }
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here

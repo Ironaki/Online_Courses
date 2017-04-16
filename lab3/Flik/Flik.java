@@ -4,3 +4,6 @@ public class Flik {
         return a == b;
     }
 }
+
+/** Integer and int are different
+ * == and .equals() are different */

@@ -75,6 +75,9 @@ public class IntListTest {
         IntList A = IntList.list(1,2,3);
         IntList exp = IntList.list(3,2,1);
         assertEquals(exp,IntList.reverse(A));
+        IntList B = IntList.list(1,2,3);
+        assertNotEquals(B,IntList.reverse(B));
+        assertEquals(null,IntList.reverse(null));
 
     }
 
