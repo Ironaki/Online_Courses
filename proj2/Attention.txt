@@ -1,0 +1,1 @@
+I did not finish the interactivity part of project 2. Following the same pattern I did in file MainDB, I could easily finish this project, but I’m afraid that I’m taking a tedious approach to this problem. Maybe I will finish it when I have better ideas.

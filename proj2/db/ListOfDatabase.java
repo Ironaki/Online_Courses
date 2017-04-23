@@ -1,10 +1,16 @@
+package db;
+
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
-import db.Database;
+/**
+ * Created by Armstrong on 4/21/17.
+ */
+public class ListOfDatabase {
 
-public class Main {
     private static final String EXIT   = "exit";
     private static final String PROMPT = "> ";
 
@@ -30,4 +36,5 @@ public class Main {
 
         in.close();
     }
+
 }
