@@ -3,6 +3,7 @@ import java.util.TreeMap;
 import java.io.IOException;
 import java.util.Scanner;
 import edu.princeton.cs.algs4.Stopwatch;
+import java.util.HashMap;
 
 /** Performs a timing test on three different set implementations.
  *  @author Josh Hug
@@ -26,9 +27,13 @@ public class InsertRandomSpeedTest {
 
         String repeat = "y";
         do {
-            System.out.print("\nEnter # strings to insert into ULLMap: ");
-            timeRandomMap61B(new ULLMap<String, Integer>(), 
-                            waitForPositiveInt(input), L);
+//            System.out.print("\nEnter # strings to insert into ULLMap: ");
+//            timeRandomMap61B(new ULLMap<String, Integer>(),
+//                            waitForPositiveInt(input), L);
+
+            System.out.print("\nEnter # strings to insert into HashMap: ");
+            timeRandomHashMap61B(new HashMap<String, Integer>(),
+                    waitForPositiveInt(input), L);
 
             System.out.print("\nEnter # strings to insert into your BSTMap: ");
             timeRandomMap61B(new BSTMap<String, Integer>(), 
@@ -68,6 +73,16 @@ public class InsertRandomSpeedTest {
         return sw.elapsedTime();
     }
 
+    public static double insertRandom(HashMap<String, Integer> hashMap, int N, int L) {
+        Stopwatch sw = new Stopwatch();
+        String s = "cat";
+        for (int i = 0; i < N; i++) {
+            s = StringUtils.randomString(L);
+            hashMap.put(s, new Integer(i));
+        }
+        return sw.elapsedTime();
+    }
+
     /*
         Attempts to insert N random strings of length L into map,
         Prints time of the N insert calls, otherwise
@@ -99,6 +114,18 @@ public class InsertRandomSpeedTest {
             e.printStackTrace(); 
         }
     }
+
+    public static void timeRandomHashMap61B(HashMap<String, Integer> hashMap, int N, int L) {
+        try {
+            double javaTime = insertRandom(hashMap, N, L);
+            System.out.printf("Java's Built-in HashMap: %.2f sec\n", javaTime);
+        } catch (StackOverflowError e) {
+            printInfoOnStackOverflow(N, L);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /*
         Waits for the user on other side of Scanner
