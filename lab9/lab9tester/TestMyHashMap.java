@@ -15,7 +15,7 @@ public class TestMyHashMap {
 	    	MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
 	    	MyHashMap<Integer, String> c = new MyHashMap<Integer, String>();
 	    	MyHashMap<Boolean, Integer> e = new MyHashMap<Boolean, Integer>();
-	    } catch (Exception e) { 
+	    } catch (Exception e) {
 	    	fail();
 	    }
     }
@@ -28,7 +28,7 @@ public class TestMyHashMap {
             b.put("hi" + i, 1);
             //make sure put is working via containsKey and get
             assertTrue( null != b.get("hi" + i)
-                        && b.containsKey("hi" + i)); 
+                        && b.containsKey("hi" + i));
         }
         b.clear();
         assertEquals(0, b.size());
@@ -78,7 +78,7 @@ public class TestMyHashMap {
         assertTrue(b.containsKey("hi") && b.get("hi") != null);
     }
 
-    /* 
+    /*
     * Sanity test for keySet
     */
     @Test
@@ -86,7 +86,7 @@ public class TestMyHashMap {
     	MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
         HashSet<String> values = new HashSet<String>();
         for (int i = 0; i < 455; i++) {
-            b.put("hi" + i, 1);   
+            b.put("hi" + i, 1);
             values.add("hi" + i);
         }
         assertEquals(455, b.size()); //keys are there
