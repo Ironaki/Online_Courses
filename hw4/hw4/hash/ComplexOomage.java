@@ -10,6 +10,7 @@ public class ComplexOomage implements Oomage {
     private static final double WIDTH = 0.05;
 
     @Override
+    /* Commented out some code that try to solve the problem caused by deadlyParameter*/
     public int hashCode() {
         int total = 0;
         for (int x : params) {
@@ -74,8 +75,22 @@ public class ComplexOomage implements Oomage {
     public static ComplexOomage randomComplexOomage() {
         int N = StdRandom.uniform(1, 10);
         ArrayList<Integer> params = new ArrayList<>(N);
+
         for (int i = 0; i < N; i += 1) {
             params.add(StdRandom.uniform(0, 255));
+        }
+        return new ComplexOomage(params);
+    }
+
+    public static ComplexOomage randomDeadlyComplexOomage() {
+        int N = StdRandom.uniform(5, 10);
+        ArrayList<Integer> params = new ArrayList<>(N);
+
+        for (int i = 0; i < N-4; i += 1) {
+            params.add(StdRandom.uniform(0, 255));
+        }
+        for (int i = N-4; i < N; i++) {
+            params.add(0);
         }
         return new ComplexOomage(params);
     }

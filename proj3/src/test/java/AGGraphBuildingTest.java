@@ -51,6 +51,11 @@ public class AGGraphBuildingTest {
         expected.add(1026001234L);
         expected.add(2291835223L);
 
+        long test = 1214221859L;
+        for (long adjTest: graph.adjacent(test)) {
+            System.out.println(adjTest);
+        }
+
         for (long neighbor : graph.adjacent(v)) {
             actual.add(neighbor);
         }

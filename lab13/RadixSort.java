@@ -20,7 +20,65 @@ public class RadixSort
      **/
     public static String[] sort(String[] asciis)
     {
-        return null;
+        int maxLen = 0;
+        for (String s: asciis) {
+            if (s.length() > maxLen) {
+                maxLen = s.length();
+            }
+        }
+
+        String[] unsorted = new String[asciis.length];
+        for (int i = 0; i < asciis.length; i++) {
+            unsorted[i] = asciis[i];
+        }
+        String[] sorted = new String[asciis.length];
+
+        for (int digit = maxLen-1; digit >= 0; digit--) {
+
+            int nothing = 0;
+            int[] counts = new int[256];
+            int[] start = new int[256];
+
+            for (int i = 0; i < asciis.length; i++) {
+                String s = unsorted[i];
+
+                if (s.length()-1 < digit) {
+                    nothing += 1;
+                } else {
+                    char c = s.charAt(digit);
+                    counts[(int) c] += 1;
+                }
+            }
+
+            for (int j = 1; j < start.length; j++) {
+                start[j] = counts[j-1] + start[j-1];
+            }
+
+            for (int j = 0; j < start.length; j++) {
+                start[j] = start[j] + nothing;
+            }
+
+            int k = 0;
+            for (int i = 0; i < asciis.length; i++) {
+                String s = unsorted[i];
+
+                if (s.length()-1 < digit) {
+                    sorted[k] = s;
+                    k += 1;
+                } else {
+                    char c = s.charAt(digit);
+                    int charInt = (int) c;
+                    sorted[start[charInt]] = s;
+                    start[charInt] += 1;
+                }
+            }
+            for (int i = 0; i < unsorted.length; i++) {
+                unsorted[i] = sorted[i];
+            }
+
+        }
+
+        return sorted;
     }
 
     /**
@@ -36,5 +94,29 @@ public class RadixSort
     private static void sortHelper(String[] asciis, int start, int end, int index)
     {
         //TODO use if you want to
+    }
+
+
+    public static void main(String[] args) {
+        String[] toSort = {"Yukino", "Asuna", "Setuna", "Asuka", "Kawori",
+                "Reina", "Kurisu", "Tomoyo", "Eru", "Utaha", "Mashu", "Haruna"};
+
+        String[] sorted = sort(toSort);
+
+        System.out.print("The original order is: ");
+        for (String s: toSort) {
+            System.out.print(s);
+            System.out.print(" ");
+        }
+
+        System.out.println("");
+
+        System.out.print("The sorted order is: ");
+        for (String s: sorted) {
+            System.out.print(s);
+            System.out.print(" ");
+        }
+
+
     }
 }

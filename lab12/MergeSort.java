@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.Quick;
 
 public class MergeSort {
     /**
@@ -34,8 +35,14 @@ public class MergeSort {
     /** Returns a queue of queues that each contain one item from items. */
     private static <Item extends Comparable> Queue<Queue<Item>>
             makeSingleItemQueues(Queue<Item> items) {
-        // Your code here!
-        return null;
+        Queue<Queue<Item>> queueOfQueue = new Queue<>();
+
+        for (Item singleItem: items) {
+            Queue<Item> singleItemQueue = new Queue<>();
+            singleItemQueue.enqueue(singleItem);
+            queueOfQueue.enqueue(singleItemQueue);
+        }
+        return queueOfQueue;
     }
 
     /**
@@ -53,14 +60,60 @@ public class MergeSort {
      */
     private static <Item extends Comparable> Queue<Item> mergeSortedQueues(
             Queue<Item> q1, Queue<Item> q2) {
-        // Your code here!
-        return null;
+        Queue<Item> sortedQueue = new Queue<>();
+
+        while (!(q1.isEmpty()&&q2.isEmpty())) {
+            sortedQueue.enqueue(getMin(q1, q2));
+        }
+        return sortedQueue;
     }
 
     /** Returns a Queue that contains the given items sorted from least to greatest. */
     public static <Item extends Comparable> Queue<Item> mergeSort(
             Queue<Item> items) {
-        // Your code here!
-        return items;
+        Queue<Queue<Item>> queueOfQueue = makeSingleItemQueues(items);
+
+        while (queueOfQueue.size() > 1) {
+            Queue<Item> first = queueOfQueue.dequeue();
+            Queue<Item> second = queueOfQueue.dequeue();
+            queueOfQueue.enqueue(mergeSortedQueues(first, second));
+        }
+
+        return queueOfQueue.dequeue();
+    }
+
+    public static void main(String[] args) {
+
+        Queue<String> students = new Queue<>();
+        students.enqueue("Yukino");
+        students.enqueue("Asuna");
+        students.enqueue("Kurisu");
+        students.enqueue("Setsuna");
+        students.enqueue("Eru");
+        students.enqueue("Reina");
+        students.enqueue("Kawori");
+        students.enqueue("Mashu");
+        students.enqueue("Tomoyo");
+        students.enqueue("Utaha");
+        students.enqueue("Haruna");
+
+        /* Uncomment the following three line if you want 10000 Klijia in the result*/
+//        for (int i = 0; i < 10000; i++) {
+//            students.enqueue("Klijia");
+//        }
+
+        System.out.print("The unsorted queue is: ");
+        for(String s: students) {
+            System.out.print(s);
+            System.out.print(" ");
+        }
+
+        System.out.println("");
+        Queue<String > sortedStudents = MergeSort.mergeSort(students);
+        System.out.print("The sorted queue is: ");
+        for(String s: sortedStudents) {
+            System.out.print(s);
+            System.out.print(" ");
+        }
     }
 }

@@ -52,7 +52,38 @@ public class CountingSort {
      * @param toSort int array that will be sorted
     **/
     public static int[] betterCountingSort(int[] toSort) {
-        //TODO make it work with arrays containing negative numbers.
-        return null;
+        // make it work with arrays containing negative numbers.
+
+        int max = Integer.MIN_VALUE;
+        for (int i: toSort) {
+            if (Math.abs(i) > max) {
+                max = Math.abs(i);
+            }
+        }
+
+        int[] positive = new int[max+1];
+        int[] negative = new int[max+1];
+
+        for (int i: toSort) {
+            if (i < 0) {
+                negative[Math.abs(i)] += 1;
+            } else {
+                positive[i] += 1;
+            }
+        }
+
+        int[] sorted = new int[toSort.length];
+        int k = 0;
+        for (int i = negative.length-1; i > 0; i--) {
+            for (int j = 0; j < negative[i]; j++, k++) {
+                sorted[k] = -1*i;
+            }
+        }
+        for (int i = 0; i < positive.length; i++) {
+            for (int j = 0; j < positive[i]; j++, k++) {
+                sorted[k] = i;
+            }
+        }
+        return sorted;
     }
 }
