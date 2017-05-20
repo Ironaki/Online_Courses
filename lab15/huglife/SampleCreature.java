@@ -77,6 +77,7 @@ public class SampleCreature extends Creature {
         r = Math.max(r, 0);
     }
 
+//    int numWall = 0;
     /** Sample Creatures take actions according to the following rules about
      *  NEIGHBORS:
      *  1. If surrounded on three sides, move into the empty space.
@@ -88,6 +89,11 @@ public class SampleCreature extends Creature {
      */
     public Action chooseAction(Map<Direction, Occupant> neighbors) {
         List<Direction> empties = getNeighborsOfType(neighbors, "empty");
+//        List<Direction> impassibles = getNeighborsOfType(neighbors, "impassible");
+//        if (impassibles.size() > 0) {
+//            numWall ++;
+//            System.out.println("I saw a wall! x" + numWall);
+//        }
         if (empties.size() == 1) {
             Direction moveDir = empties.get(0);
             return new Action(Action.ActionType.MOVE, moveDir);
