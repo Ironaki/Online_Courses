@@ -305,8 +305,8 @@ tramp
 ~$*.ppt*
 
 # Project 3 things
-proj3/img
-proj3/target
+Data_Structure_Berkeley_CS61B/proj3/img
+Data_Structure_Berkeley_CS61B/proj3/target
 *.osm
 
 # Project 1B things
