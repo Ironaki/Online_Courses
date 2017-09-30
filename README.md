@@ -8,6 +8,6 @@ Everything is finished except:
 1. Front end of project2 Database, which is tedious. It can be done with regex and multiple if expressions.
 1. Homework2 Percolation, which I did in Princeton Algorithms class.
 
-## Attention
+## TODO
 
-Please do not use my code if you are enrolled in this course. You should do your own work, and there is no guarantee of correctness of my code.
+I want to merge all the courses I took to a large repo.
