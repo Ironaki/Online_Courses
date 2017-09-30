@@ -6,4 +6,4 @@ alg4.jar is a package for this course
 
 ## Progress
 
-Part I: Everything finished
+Part I: Everything finished and 100% score
