@@ -4,4 +4,4 @@
 
 [Checklist](http://coursera.cs.princeton.edu/algs4/checklists/8puzzle.html)
 
-Testfiles in 8 puzzle.
+Testfiles in 8puzzle folder.
