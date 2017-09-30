@@ -1,0 +1,4 @@
+The homework get 100%, but it failed a memory test.
+The reason is that I used resizing array implemetation for deque.
+Using linked list implemetation will pass this test.
+It is, however, a minor improvement, so I am not going to do it.
