@@ -1,3 +1,3 @@
 # Self Study Courses Catalog
 
-To Be Finished
+This is a record of mine of my progress of self study
