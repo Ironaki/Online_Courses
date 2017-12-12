@@ -92,7 +92,17 @@
                             #f)))))))
 
 ;; 11
-
+(define-syntax while-less
+  (syntax-rules (do)
+    [(while-less e1 do e2)
+     (let ([x e1])
+       (letrec ([loop (lambda ()
+                        (let ([val e2])
+                          (if (> x val)
+                              (loop)
+                              #t)))])
+         (loop)))]))
+                              
 
 
 
