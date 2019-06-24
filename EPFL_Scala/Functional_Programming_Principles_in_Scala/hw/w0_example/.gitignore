@@ -1,5 +1,0 @@
-*.sbt
-project/**
-scalastyle/**
-target/**
-src/main/scala/common/**
