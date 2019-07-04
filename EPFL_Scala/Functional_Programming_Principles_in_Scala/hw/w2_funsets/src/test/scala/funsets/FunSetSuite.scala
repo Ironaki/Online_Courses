@@ -74,12 +74,15 @@ class FunSetSuite extends FunSuite {
    */
 
   trait TestSets {
-    val s1: Set = singletonSet(1)
-    val s2: Set = singletonSet(2)
-    val s3: Set = singletonSet(3)
-    val s0: Set = singletonSet(0)
-    val s1000: Set = singletonSet(1000)
-    val sn1000: Set = singletonSet(-1000)
+    val s1 = singletonSet(1)
+    val s2 = singletonSet(2)
+    val s3 = singletonSet(3)
+    val s0 = singletonSet(0)
+    val s1000 = singletonSet(1000)
+    val sn1000 = singletonSet(-1000)
+    val s123 = union(union(s1, s2), s3)
+    val s023 = union(union(s0, s2), s3)
+    val sall = union(union(union(union(union(s1, s2), s3), s0), sn1000), s1000)
   }
 
   /**
@@ -107,7 +110,7 @@ class FunSetSuite extends FunSuite {
 
   test("union contains all elements of each set") {
     new TestSets {
-      val s: Set = union(s1, s2)
+      val s = union(s1, s2)
       assert(contains(s, 1), "Union 1")
       assert(contains(s, 2), "Union 2")
       assert(!contains(s, 3), "Union 3")
@@ -116,8 +119,6 @@ class FunSetSuite extends FunSuite {
 
   test("Intersect") {
     new TestSets {
-      val s123: Set = union(union(s1, s2), s3)
-      val s023: Set = union(union(s0, s2), s3)
       val s = intersect(s123, s023)
       assert(contains(s, 2), "intersect 2")
       assert(contains(s, 3), "intersect 3")
@@ -128,10 +129,8 @@ class FunSetSuite extends FunSuite {
 
   test("Diff") {
     new TestSets {
-      val s123: Set = union(union(s1, s2), s3)
-      val s023: Set = union(union(s0, s2), s3)
-      val s1_ : Set = diff(s123, s023)
-      val s0_ : Set = diff(s023, s123)
+      val s1_ = diff(s123, s023)
+      val s0_  = diff(s023, s123)
       assert(contains(s1_, 1), "diff 1")
       assert(contains(s0_, 0), "diff 0")
       assert(!contains(s0_, 1), "diff 1 not in 0")
@@ -140,8 +139,7 @@ class FunSetSuite extends FunSuite {
 
   test("filter") {
     new TestSets{
-      val sall: Set = union(union(union(union(union(s1, s2), s3), s0), sn1000), s1000)
-      val sneg: Set = filter(sall, (x: Int) => x <= 0)
+      val sneg = filter(sall, (x: Int) => x <= 0)
       assert(contains(sneg, 0), "filter 0")
       assert(contains(sneg, -1000), "filter -1000")
       assert(!contains(sneg, 1), "filter 1")
@@ -150,8 +148,7 @@ class FunSetSuite extends FunSuite {
 
   test("forall") {
     new TestSets{
-      val sall: Set = union(union(union(union(union(s1, s2), s3), s0), sn1000), s1000)
-      val spos: Set = filter(sall, (x: Int) => x > 0)
+      val spos = filter(sall, (x: Int) => x > 0)
       assert(forall(spos, (x: Int) => x > 0), "larger than 0")
       assert(forall(spos, (x: Int) => x < 10000), "less than 10000")
       assert(!forall(spos, (x: Int) => x < 50), "less than 50 (false)")
@@ -160,8 +157,7 @@ class FunSetSuite extends FunSuite {
 
   test("exists") {
     new TestSets{
-      val sall: Set = union(union(union(union(union(s1, s2), s3), s0), sn1000), s1000)
-      val spos: Set = filter(sall, (x: Int) => x > 0)
+      val spos = filter(sall, (x: Int) => x > 0)
       assert(exists(spos, (x: Int) => x > 0), "larger than 0")
       assert(exists(spos, (x: Int) => x < 10000), "less than 10000")
       assert(exists(spos, (x: Int) => x < 50), "less than 50")
@@ -172,8 +168,7 @@ class FunSetSuite extends FunSuite {
 
   test("map") {
     new TestSets {
-      val sall: Set = union(union(union(union(union(s1, s2), s3), s0), sn1000), s1000)
-      val s2times: Set = map(sall, (x: Int) => 2 * x)
+      val s2times = map(sall, (x: Int) => 2 * x)
       assert(contains(sall, 1000), "1000")
       assert(contains(s2times, 2000), "2000")
       assert(!contains(s2times, 3), "not 3")
