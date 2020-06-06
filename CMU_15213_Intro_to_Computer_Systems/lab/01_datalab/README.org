@@ -1,3 +1,10 @@
 * Makefile
 gcc -m32 and -mx32
 https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html
+
+* Docker
+Use docker for building and testing
+#+BEGIN_SRC sh
+docker build -t 15213/datalab .
+docker run --rm -it 15213/datalab
+#+END_SRC
