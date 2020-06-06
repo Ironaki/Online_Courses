@@ -166,6 +166,10 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
+    /* Tmax+1 overflows to Tmin
+       xor with Tmax to get all -1(0xFFFFFFFF),
+       flip all bit s to  get 0.
+       But -1 also get to 0 for the steps above, so we also check it's not -1*/
     return ! ~((x+1) ^ x) & !!(~x);
 }
 /* 
@@ -177,7 +181,11 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+    /* 0x55555555 or x should give 0xFFFFFFFF */
+    int Five2 = 0x55;
+    int Five4 = (Five2 << 8) | Five2;
+    int Five8 = (Five4 << 16) | Five4;
+    return ! ~(Five8|x);
 }
 /* 
  * negate - return -x 
